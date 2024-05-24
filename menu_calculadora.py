@@ -6,6 +6,9 @@ from calculos_de_la_calculadora import *
 
 
 def pausar():
+    """Funcion que pause el programa 
+    hasta que el usuario presione alguna tecla.
+    """
     system("pause")
 
 #menu principal
@@ -13,14 +16,32 @@ def pausar():
 
 #funcion de opcion A y opcion B
 def pedir_numero():
+    """Funcion para pedir los operandos por consola.
+
+    Returns:
+        entero: devuelve el numero ingresado. 
+    """
+
     x = input("ingrese un numero: ")
     x = int(x)
     return x
 
 
-def menu_calculadora():
-    print("A) primer operando") 
-    print("B) segundo operando") 
+def menu_calculadora(x,y):
+    """Funcion que muestra el menu principal de la calculadora.
+
+    Args:
+        x (string): Opcion para ingresar el primer operando.
+        y (string): Opcion para ingresar el segundo operando.
+        z (string): Opcion que nos lleva a otro menu para elegir el calculo.
+        r (string): Opcion para mostrar el resultado del calculo hecho entre x e y.
+        t (string): Opcion para salir del programa.
+    Returns:
+        string: devuelve la opcion elegida.
+    """
+
+    print(f"A) primer operando {"A = x" if x == None else f"A = {x}"}") 
+    print(f"B) segundo operando {"B = y" if y == None else f"B = {y}"}") 
     print("C) elija el calculo a realizar") 
     print("D) mostrar el resultado") 
     print("E) fin del programa")
@@ -32,6 +53,17 @@ def menu_calculadora():
 
 
 def menu_de_calculos():
+    """Funcion que muestra el menu principal de la calculadora.
+
+    Args:
+        x (string): Opcion que nos ejecuta la funcion de suma.
+        y (string): Opcion que nos ejecuta la funcion de resta.
+        z (string): Opcion que nos ejecuta la funcion de multiplicar.
+        r (string): Opcion que nos ejecuta la funcion de dividir.
+        t (string): Opcion que nos ejecuta la funcion de factorial.
+    Returns:
+        entero: Devuelve el resulado del calculo.
+    """
     print("1) Suma")
     print("2) Resta")
     print("3) Multiplicación")
@@ -63,6 +95,12 @@ def menu_de_calculos():
 
 #funcion para mostrar el resultado
 def mostrar_resultado(resultado):
+    """Funcion para mostrar el resultado del calculo realizado
+       en la funcion menu_de_calculos()
+
+    Args:
+        entero: printea el resultado 
+    """
 
     print(resultado)
 
@@ -71,9 +109,15 @@ puerta_primer_operando = False
 puerta_segundo_operando = False
 puerta_opciones_de_calculo = False
 desea_seguir = "s"
+x = None
+y = None
+
+"""Por ultimo entramos al while principal, que hace que las tareas de la calculadora sigan un orden especifico.
+Esto se logra mediante el uso de banderas (que yo llamo puertas).
+"""
 
 while desea_seguir == "s":
-    opcion = menu_calculadora()
+    opcion = menu_calculadora(x,y)
    
     match(opcion):
         case "A":
